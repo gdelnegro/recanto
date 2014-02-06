@@ -1,0 +1,59 @@
+<?php $this->doctype('HTML5')?>
+<?php $baseUrl = Zend_Controller_Front::getInstance()->getBaseUrl();?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />     
+        <title>Supermercado Recanto</title>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <?php echo $this->headTitle() ?>
+        <?php echo $this->headLink()->appendStylesheet(Zend_Controller_Front::getInstance()->getBaseUrl().'/css/bootstrap.css')?>
+        <style>
+        </style>
+    </head>
+    
+<!-- HEADER -->
+
+<div class="page-header">
+    <h1><div id="logo-image" style="background-color: <?php echo $dadosLogo[0]['corFundo']?>">
+                                    <a href=""><img src="../placeholders/logo.png" alt="" width="10%" height="10%"/></a>
+				</div><!--logo-image-->
+        <small>Administração de conteúdo</small></h1>
+    
+    <div id="area_login">
+                <table>
+                    <tr>
+                        <td>Ola <b><?php #echo $this->layout()->usuario->nome; ?> <i class="icon-user"></i> </b></td>
+                        <td><a href="<?php echo $this->url(array("controller"=>"index"),null,true);?>">Logout</a></td>
+                    </tr>
+                </table>
+            </div>
+</div>
+<!-- HEADER -->
+
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span3">
+      <!--Menu-->    
+      <!-- <ul class="nav nav-list bs-docs-sidenav"> -->
+          <ul class="nav nav-tabs nav-stacked bs-docs-sidenav affix">
+          <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"programas","action"=>"index"),null,true)?>">Programas</a></li>          
+          <li><a href="#">Midia</a></li>          
+          <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"article","action"=>"index"),null,true)?>"><i class="icon-chevron-right"></i>Açougue</a></li>
+          <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"revistas","action"=>"index"),null,true)?>"><i class="icon-chevron-right"></i>Frios</a></li>
+          <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"sponsor","action"=>"index"),null,true)?>"><i class="icon-chevron-right"></i>Receitas</a></li>
+          <?php if( $this->layout()->usuario->grupo == 1){?>
+            <li><a>Administração</a></li>
+            <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"users","action"=>"index"),null,true)?>"><i class="icon-chevron-right"></i> Administrar Usuários</a></li>
+            <li><a href="<?php echo $this->url(array("module"=>"admin","controller"=>"group","action"=>"index"),null,true)?>"><i class="icon-chevron-right"></i> Administrar grupos de usuários</a></li>            
+            <?php };?>
+        </ul>
+    </div>
+    <div class="span8">
+      <?php echo $this->layout()->content; ?>
+    </div>
+  </div><!-- div class=row -->
+</div>
+
+
+<!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script> -->
